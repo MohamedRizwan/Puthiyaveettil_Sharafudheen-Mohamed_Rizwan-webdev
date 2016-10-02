@@ -3,5 +3,86 @@ input.form-control {
 }
 
 body {
-    padding-top: 36px;
+    padding-top: 65px;
+}
+
+.login-header{
+    margin-top: 40px;
+}
+
+.blue-text{
+    color: #2e6da4;
+}
+
+.right-line{
+    height: 90vh;
+    border-right: 1px solid lightgrey;
+    margin-top: -20px;
+}
+.right-down{
+    margin-top: 20px;
+}
+
+.top-margin{
+    margin-top:10px;
+}
+
+.bottom-margin{
+    margin-bottom: 60px;
+}
+
+.widget-position{
+    position: relative;
+}
+
+.right-margin{
+    margin-right: 20px !important;
+}
+
+.navbar-default{
+    background-color: #337ab7;
+    border-color: #2e6da4;
+    color: #fff;
+}
+
+.navbar-default .navbar-text{
+    color:#fff;
+}
+
+.navbar-default .navbar-link{
+    color:#fff;
+}
+
+.navbar-default .navbar-brand{
+    color:#fff;
+}
+
+.navbar-text{
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+}
+
+.top{
+    position: absolute;
+    padding-right: 0px;
+    height: 25px;
+}
+
+
+@media (min-width: 992px) and (orientation:landscape) {
+    .col-md-4 {
+    }
+}
+
+.no-margin-bottom{
+    margin-bottom: 0px;
+}
+
+.widget-style{
+    border-bottom-left-radius: 5px;
+    background-color: white;
+}
+
+.right-nav{
+    margin-right:10px;
 }
