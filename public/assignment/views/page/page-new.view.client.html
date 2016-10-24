@@ -43,19 +43,7 @@
 <div class="container-fluid">
     <div class="row">
         <div class="hidden-xs hidden-sm col-md-5 col-lg-5 right-line">
-            <div ng-repeat = "page in model.pages" class="row">
-                <div class="col-xs-10 col-sm-10 col-mid-10 col-lg-10">
-                    <p class="pull-left ">
-                        <a ng-click = "model.goToWidgetList(page)">{{page.name}}</a>
-                    </p>
-                </div>
-                <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
-                    <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{page._id}}" class="pull-right">
-                        <span class="glyphicon glyphicon-cog"/>
-                    </a>
-                </div>
-            </div>
-            <!--<div ng-repeat="page in model.pages" class="right-down">
+            <div ng-repeat="page in model.pages" class="right-down">
                 <div class="col-md-10 col-lg-10">
                     <p class="pull-left">
                         <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{page._id}}/widget">{{page.name}}</a>
@@ -68,7 +56,7 @@
                 </div>
 
 
-            </div>-->
+            </div>
         </div>
         <div class="col-xs-11 col-sm-12 col-md-7 col-lg-7">
             <form>

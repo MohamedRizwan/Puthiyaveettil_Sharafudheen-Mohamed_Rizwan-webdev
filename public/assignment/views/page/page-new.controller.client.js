@@ -14,6 +14,7 @@
         var websiteId = parseInt($routeParams['wid']);
         vm.websiteId = websiteId;
         vm.createPage = createPage;
+        vm.pages = PageService.findPageByWebsiteId(websiteId);
         function createPage(name)
         {
             var page = {_id: "0", name: name, wid: websiteId};
