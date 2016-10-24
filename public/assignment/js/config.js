@@ -2,8 +2,7 @@
  * Created by Rizwan Mohamed on 10/18/2016.
  */
 
-(function()
-{
+(function () {
     angular
         .module("WebAppMaker")
         .config(Config);
@@ -43,7 +42,7 @@
             })
             .when("/user/:uid/website/:wid/page", {
                 templateUrl: "views/page/page-list.view.client.html",
-                controller:"PageListController",
+                controller: "PageListController",
                 controllerAs: "model"
             })
             .when("/user/:uid/website/:wid/page/new", {

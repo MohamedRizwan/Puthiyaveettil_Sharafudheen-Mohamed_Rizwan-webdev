@@ -1,12 +1,11 @@
 /**
  * Created by Rizwan Mohamed on 10/19/2016.
  */
-(function(){
+(function () {
     angular
         .module("WebAppMaker")
         .controller("WidgetHeadingController", WidgetHeadingController);
-    function WidgetHeadingController($location, $routeParams, WidgetService)
-    {
+    function WidgetHeadingController($location, $routeParams, WidgetService) {
         var vm = this;
         var userId = parseInt($routeParams['uid']);
         vm.userId = userId;

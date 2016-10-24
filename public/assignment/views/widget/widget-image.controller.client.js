@@ -1,12 +1,11 @@
 /**
  * Created by Rizwan Mohamed on 10/19/2016.
  */
-(function(){
+(function () {
     angular
         .module("WebAppMaker")
         .controller("WidgetImageController", WidgetImageController);
-    function WidgetImageController($location, $routeParams, WidgetService)
-    {
+    function WidgetImageController($location, $routeParams, WidgetService) {
         var vm = this;
         var userId = parseInt($routeParams['uid']);
         vm.userId = userId;

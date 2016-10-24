@@ -11,7 +11,7 @@
             <p class="navbar-brand">
                 Edit Widget
             </p>
-            <p class="navbar-text pull-right widgetGlyphAligner" id = "webListPlus">
+            <p class="navbar-text pull-right widgetGlyphAligner" id="webListPlus">
                 <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget"
                    class="navbar-link">
           <span class="glyphicon glyphicon-ok glyphColorRectifier glyphPosRectifier">
@@ -23,20 +23,20 @@
 </nav>
 
 
-<div class="container" id = "newPageSpaceMaker">
-    <form class = "form-group" class = "newWebsiteSpaceMaker" id = "websitelistSpaceMaker">
-        <label for = "newImageName">Name</label>
-        <input type = "text" id = "newImageName" class = "form-control"/>
-        <label for = "newImageText">Text</label>
-        <input type = "text" id = "newImageText"  class = "form-control"/>
-        <label for = "newImageURL">URL</label>
-        <input type = "text" id = "newImageURL" class = "form-control"
+<div class="container" id="newPageSpaceMaker">
+    <form class="form-group" class="newWebsiteSpaceMaker" id="websitelistSpaceMaker">
+        <label for="newImageName">Name</label>
+        <input type="text" id="newImageName" class="form-control"/>
+        <label for="newImageText">Text</label>
+        <input type="text" id="newImageText" class="form-control"/>
+        <label for="newImageURL">URL</label>
+        <input type="text" id="newImageURL" class="form-control"
                placeholder="https://www.youtube.com/embed/Uks8psEpmB4"/>
-        <label for = "newImageWidth">Width</label>
-        <input type = "text" id = "newImageWidth" class = "form-control"/>
+        <label for="newImageWidth">Width</label>
+        <input type="text" id="newImageWidth" class="form-control"/>
     </form>
-    <div class = "row">
-        <div class = "col-xs-12">
+    <div class="row">
+        <div class="col-xs-12">
             <a class="btn btn-danger btn-block form-control"
                ng-click="model.deleteWidget(model.currentWidget._id)">
                 Delete Widget</a>
@@ -49,7 +49,7 @@
     <div class="container-fluid">
         <div class="navbar-header floatRectifier">
             <p class="navbar-text pull-right widgetGlyphAligner">
-                <a href="#/user/{{model.userId}}" class="navbar-link" id = "webListUser">
+                <a href="#/user/{{model.userId}}" class="navbar-link" id="webListUser">
           <span class="glyphicon glyphicon-user glyphColorRectifier">
           </span>
                 </a>

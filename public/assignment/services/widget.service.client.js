@@ -45,7 +45,7 @@
         function createWidget(pageId, widget) {
             var newWidgetId = parseInt(widgets[widgets.length - 1]._id) + 1;
 
-            if (widget.widgetType.toString() == "HEADER") {
+            if (widget.widgetType === "HEADER") {
                 var newWidget = {
                     _id: newWidgetId.toString(),
                     widgetType: widget.widgetType,
@@ -57,7 +57,7 @@
                 return newWidget;
             }
 
-            if (widget.widgetType.toString() == "IMAGE") {
+            if (widget.widgetType.toString() === "IMAGE") {
                 var newWidget = {
                     _id: newWidgetId.toString(),
                     widgetType: widget.widgetType,
@@ -69,7 +69,7 @@
                 return newWidget;
             }
 
-            if (widget.widgetType.toString() == "YOUTUBE") {
+            if (widget.widgetType === "YOUTUBE") {
                 var newWidget = {
                     _id: newWidgetId.toString(),
                     widgetType: widget.widgetType,
@@ -81,7 +81,7 @@
                 return newWidget;
             }
 
-            if (widget.widgetType.toString() == "HTML") {
+            if (widget.widgetType === "HTML") {
                 var newWidget = {
                     _id: newWidgetId.toString(),
                     widgetType: widget.widgetType,
@@ -101,7 +101,6 @@
                     result.push(widgets[wg]);
                 }
             }
-            console.log(result);
             return result;
         }
 
@@ -117,9 +116,7 @@
 
         function updateWidget(widgetId, widget) {
             var newWidgetId = parseInt(widgets[widgets.length - 1]._id) + 1;
-            console.log(widgetId);
-            console.log(widget);
-            if (widget.widgetType.toString() == "HEADER") {
+            if (widget.widgetType.toString() === "HEADER") {
                 var newWidget = {
                     _id: newWidgetId.toString(),
                     widgetType: widget.widgetType,
@@ -131,7 +128,7 @@
 
             }
 
-            if (widget.widgetType.toString() == "HTML") {
+            if (widget.widgetType.toString() === "HTML") {
                 var newWidget = {
                     _id: newWidgetId.toString(),
                     widgetType: widget.widgetType,
@@ -142,7 +139,7 @@
 
             }
 
-            if (widget.widgetType.toString() == "IMAGE") {
+            if (widget.widgetType.toString() === "IMAGE") {
                 var newWidget = {
                     _id: newWidgetId.toString(),
                     widgetType: widget.widgetType,
@@ -154,7 +151,7 @@
 
             }
 
-            if (widget.widgetType.toString() == "YOUTUBE") {
+            if (widget.widgetType.toString() === "YOUTUBE") {
                 var newWidget = {
                     _id: newWidgetId.toString(),
                     widgetType: widget.widgetType,

@@ -62,12 +62,12 @@
             var userExists = false;
             /*var newUser = null;*/
             /*for (var u in users) {
-                var user = users[u];
-                if (user.username === newUser.username) {
-                    userExists = true;
-                    return null;
-                }
-            }*/
+             var user = users[u];
+             if (user.username === newUser.username) {
+             userExists = true;
+             return null;
+             }
+             }*/
 
             var newId = parseInt(users[users.length - 1]._id) + 1;
             var newUser = {

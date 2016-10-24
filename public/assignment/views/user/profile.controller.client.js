@@ -12,7 +12,6 @@
         var user = UserService.findUserById(userId);
         if (user != null) {
             vm.user = user;
-            console.log("found user");
         }
 
         vm.updateUser = updateUser;
