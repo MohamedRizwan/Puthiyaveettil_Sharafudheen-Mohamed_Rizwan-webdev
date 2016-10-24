@@ -1,22 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>New Website</title>
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
-    <meta name="HandheldFriendly" content="true">
-    <link href="css/style.css" rel="stylesheet"/>
-</head>
-<body>
-
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-6 col-md-4">
                 <div class=" pull-left">
                     <div>
-                        <a href="website-list.html" class="navbar-link navbar-text pull-left right-margin">
+                        <a href="#/user/{{model.userId}}/website" class="navbar-link navbar-text pull-left right-margin">
                             <span class="glyphicon glyphicon-chevron-left"/>
                         </a>
                         <p class="navbar-text pull-right hidden-xs hidden-sm">
@@ -30,7 +18,7 @@
             </div>
             <div class="hidden-xs hidden-sm col-md-1 col-lg-1">
                 <p class="navbar-text pull-right">
-                    <a href="website-new.html" class="navbar-link">
+                    <a href="#/user/{{model.userId}}/website/new" class="navbar-link">
                         <span class="glyphicon glyphicon-plus"/>
                     </a>
                 </p>
@@ -43,7 +31,7 @@
             </div>
             <div class="col-xs-1 col-sm-1 col-md-2 col-lg-2 pull-right">
                 <p class="navbar-text pull-right">
-                    <a href="website-list.html" class="navbar-link">
+                    <a ng-click = "model.createWebsite(model.name, model.description)" class="navbar-link">
                         <span class="glyphicon glyphicon-ok"/>
                     </a>
                 </p>
@@ -56,50 +44,19 @@
     <div class="row">
 
         <div class="hidden-xs hidden-sm col-md-5 col-lg-5 right-line">
-            <div class="right-down">
-                <div class="col-md-10 col-lg-10">
+            <div ng-repeat = "website in model.websites" class="right-down">
+                <div  class="col-md-10 col-lg-10">
                     <p class="pull-left">
-                        <a href="page-list.html" class="blue-text">Address Book App</a>
+                        <a ng-click="model.goToPageList(website)" class="blue-text">{{website.name}}</a>
                     </p>
                 </div>
                 <div class="col-md-2 col-lg-2">
-                    <a href="website-edit.html" class="pull-right">
+                    <a href="#/user/{{model.userId}}/website/{{model.websiteId}}" class="pull-right">
                         <span class="glyphicon glyphicon-cog"/>
                     </a>
                 </div>
 
-                <div class="col-md-10 col-lg-10">
-                    <p class="pull-left">
-                        <a href="page-list.html" class="blue-text">Blogger</a>
-                    </p>
-                </div>
-                <div class="col-md-2 col-lg-2">
-                    <a href="website-edit.html" class="pull-right">
-                        <span class="glyphicon glyphicon-cog"/>
-                    </a>
-                </div>
 
-                <div class="col-md-10 col-lg-10">
-                    <p class="pull-left">
-                        <a href="page-list.html" class="blue-text">Blogging App</a>
-                    </p>
-                </div>
-                <div class="col-md-2 col-lg-2">
-                    <a href="website-edit.html" class="pull-right">
-                        <span class="glyphicon glyphicon-cog"/>
-                    </a>
-                </div>
-
-                <div class="col-md-10 col-lg-10">
-                    <p class="pull-left">
-                        <a href="page-list.html" class="blue-text">Script Testing App</a>
-                    </p>
-                </div>
-                <div class="col-md-2 col-lg-2">
-                    <a href="website-edit.html" class="pull-right">
-                        <span class="glyphicon glyphicon-cog"/>
-                    </a>
-                </div>
             </div>
         </div>
 
@@ -108,11 +65,11 @@
             <form>
                 <div class="form-group">
                     <label for="name">Name</label>
-                    <input type="text" class="form-control" id="name" placeholder="Name">
+                    <input ng-model="model.name" type="text" class="form-control" id="name" placeholder="Name">
                 </div>
                 <div class="form-group">
                     <label for="description">Description</label>
-                    <textarea id="description" class="form-control" rows="6" placeholder="Description"></textarea>
+                    <textarea ng-model="model.description" id="description" class="form-control" rows="6" placeholder="Description"></textarea>
                 </div>
             </form>
 
@@ -127,7 +84,7 @@
             </div>
             <div class="col-xs-2 col-sm-1 col-md-1 col-lg-1">
                 <p class="navbar-text pull-right">
-                    <a href="profile.html" class="navbar-link">
+                    <a href="#/user/{{model.userId}}" class="navbar-link">
                         <span class="glyphicon glyphicon-user"/>
                     </a>
                 </p>
@@ -135,6 +92,3 @@
         </div>
     </div>
 </nav>
-
-</body>
-</html>

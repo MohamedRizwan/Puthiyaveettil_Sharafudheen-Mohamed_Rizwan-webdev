@@ -1,0 +1,90 @@
+<nav class="navbar navbar-default navbar-fixed-top widgetColorRenderer">
+    <div class="container-fluid">
+        <div class="navbar-header floatRectifier">
+            <p class="navbar-text pull-left">
+                <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page" class="navbar-link">
+                    <span class="glyphicon glyphicon-menu-left glyphColorRectifier widgetGlyphAligner floatRectifier">
+                    </span>
+                </a>
+            </p>
+            <p class="navbar-brand" href="#">
+                Widget List
+            </p>
+            <p class="navbar-text pull-right widgetGlyphAligner" id = "webListPlus">
+                <a ng-click="model.goToChooseWidget()"
+                   class="navbar-link">
+          <span class="glyphicon glyphicon-plus glyphColorRectifier glyphPosRectifier">
+          </span>
+                </a>
+            </p>
+        </div>
+    </div>
+</nav>
+
+<div class="container-fluid spaceMaker">
+    <div ng-switch = "widget.widgetType"
+         ng-repeat = "widget in model.widgets" class = "row jga-widget">
+        <div class = "col-xs-10 ">
+
+            <div ng-switch = "widget.size" ng-switch-when = "HEADER">
+                <!--<ng-include src ="'/views/widget/widget-header-editor.view.client.html'"></ng-include>-->
+                <h1 ng-switch-when = "1">{{widget.text}}</h1>
+                <h2 ng-switch-when = "2">{{widget.text}}</h2>
+                <h3 ng-switch-when = "3">{{widget.text}}</h3>
+                <h4 ng-switch-when = "4">{{widget.text}}</h4>
+                <h5 ng-switch-when = "5">{{widget.text}}</h5>
+                <h6 ng-switch-when = "6">{{widget.text}}</h6>
+            </div>
+            <div ng-switch-when = "YOUTUBE">
+                <!--<ng-include src ="'#/views/widget/widget-youtube-editor.view.client.html'"></ng-include>-->
+                <iframe width="560" height="315" ng-src="{{model.checkSafeYouTubeUrl(widget.url)}}"
+                        frameborder="0" allowfullscreen></iframe>
+            </div>
+            <div ng-switch-when = "IMAGE">
+                <!--<ng-include src ="'#/views/widget/widget-image-editor.view.client.html'"></ng-include>-->
+                <img ng-src="{{model.checkSafeImageSrc(widget.url)}}" width="{{model.width}}"/>
+            </div>
+            <div ng-switch-when = "HTML" ng-bind-html = "model.checkSafeHtml(widget.text)">
+                {{widget.text}}
+            </div>
+
+            <div ng-switch-default>Unknown widget</div>
+        </div>
+        <div class = "col-xs-1">
+            <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget/{{widget._id}}">
+                <span class="glyphicon glyphicon-cog widgetGlyphAligner"></span>
+            </a>
+        </div>
+        <div class = "col-xs-1">
+            <span class="glyphicon glyphicon-align-justify"></span>
+        </div>
+    </div>
+</div>
+
+
+<nav class="navbar navbar-default navbar-fixed-bottom widgetColorRenderer">
+    <div class="container-fluid">
+        <div class="navbar-header floatRectifier">
+            <p class="navbar-text pull-right widgetGlyphAligner">
+                <a href="#/user/{{model.userId}}" class="navbar-link" id = "webListUser">
+                <span class="glyphicon glyphicon-user glyphColorRectifier">
+                </span>
+                </a>
+            </p>
+
+            <p class = "navbar-text pull-left">
+                <a class="navbar-link" id = "webListPlay">
+                <span class="glyphicon glyphicon-play glyphColorRectifier glyphPosRectifier">
+                </span>
+                </a>
+            </p>
+
+            <p class = "navbar-text pull-left">
+                <a class="navbar-link" id = "webListEyeOpen">
+                <span class="glyphicon glyphicon-eye-open glyphColorRectifier">
+                </span>
+                </a>
+            </p>
+        </div>
+    </div>
+</nav>

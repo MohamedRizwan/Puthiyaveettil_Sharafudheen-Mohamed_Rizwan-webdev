@@ -1,0 +1,47 @@
+<nav class="navbar navbar-default navbar-fixed-top pageColorRenderer">
+    <div class="container-fluid">
+        <div class="navbar-header floatRectifier">
+            <p class="navbar-text pull-left">
+                <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget" class="navbar-link">
+          <span class="glyphicon glyphicon-menu-left glyphColorRectifier widgetGlyphAligner">
+          </span>
+                </a>
+            </p>
+            <p class="navbar-text pull-left">
+                Edit Widget
+            </p>
+            <p class="navbar-text pull-right widgetGlyphAligner" id = "webListPlus">
+                <a ng-click="model.updateWidget(model.widgetId, model.currentWidget)" class="navbar-link">
+          <span class="glyphicon glyphicon-ok glyphColorRectifier glyphPosRectifier">
+          </span>
+                </a>
+            </p>
+        </div>
+    </div>
+</nav>
+
+
+
+<div ng-show = "model.error" class ="alert alert-danger" role="alert">
+    {{model.error}}
+</div>
+<div class="container">
+
+    <div class = "container">
+        <div ng-include="'views/widget/widget-'+model.currentWidget.widgetType.toLowerCase()+'.view.client.html'"></div>
+    </div>
+</div>
+
+
+<nav class="navbar navbar-default navbar-fixed-bottom profileColorRenderer">
+    <div class="container-fluid">
+        <div class="navbar-header floatRectifier">
+            <p class="navbar-text pull-right widgetGlyphAligner">
+                <a href="#/user/{{model.userId}}" class="navbar-link" id = "webListUser">
+          <span class="glyphicon glyphicon-user glyphColorRectifier">
+          </span>
+                </a>
+            </p>
+        </div>
+    </div>
+</nav>
