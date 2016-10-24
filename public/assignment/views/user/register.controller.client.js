@@ -1,17 +1,18 @@
 /**
  * Created by Rizwan Mohamed on 10/19/2016.
  */
-(function () {
+(function(){
     angular
         .module("WebAppMaker")
         .controller("RegisterController", RegisterController);
 
-    function RegisterController($location, UserService) {
+    function RegisterController($location, UserService)
+    {
         var vm = this;
         vm.registerUser = registerUser;
 
         function registerUser() {
-            var createdUser = {
+            var potentialUser = {
                 username: vm.username,
                 password1: vm.password1,
                 password2: vm.password2,
@@ -20,7 +21,7 @@
                 email: vm.email
             };
 
-            if (potentialUser.password1 === createdUser.password2) {
+            if (potentialUser.password1 === potentialUser.password2) {
                 var newUser = {
                     username: vm.username,
                     password: vm.password1,
@@ -29,20 +30,21 @@
                     email: vm.email
                 };
 
-                var userExists = UserService.createUser(newUser);
-
-                if (userExists === null) {
+                var userId = UserService.createUser(newUser);
+                vm.userId = userId;
+                //vm.registerUser = userExists;
+                $location.url("/user/" + userId);
+                /*if (user === null) {
                     alert("User exists");
-                }
-
-                else {
+                }else {
                     var userId = userExists._id;
                     vm.userId = userId;
                     vm.registerUser = userExists;
-                    $location.url("/user/" + vm.userId);
-                }
-            } else
-                vm.error = "Passwords Do not match, please try again";
+                    $location.url("/user/" + userId);
+                }*/
+            }
+
+            else vm.error = "Passwords Do not match, please try again";
 
         }
 

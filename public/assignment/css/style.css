@@ -86,3 +86,10 @@ body {
 .right-nav{
     margin-right:10px;
 }
+
+.scroll-y {
+    overflow-y: scroll;
+    position: relative;
+    height: -moz-calc(100vh - 130px); /* Firefox */
+    height: -webkit-calc(100vh - 130px); /* Chrome, Safari */
+}
