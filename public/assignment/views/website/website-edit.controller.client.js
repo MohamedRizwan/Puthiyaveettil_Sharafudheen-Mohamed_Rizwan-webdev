@@ -4,44 +4,86 @@
 (function () {
     angular
         .module("WebAppMaker")
-        .controller("EditWebsiteController", EditWebsiteController);
-
-    function EditWebsiteController($routeParams, WebsiteService, $location) {
+        .controller("editWebsiteController", editWebsiteController);
+    function editWebsiteController($routeParams, WebsiteService, $location) {
         var vm = this;
         var userId = parseInt($routeParams['uid']);
         vm.userId = userId;
         var websiteId = parseInt($routeParams['wid']);
         vm.websiteId = websiteId;
-        var currentWebsite = WebsiteService.findWebsiteById(websiteId);
-        vm.currentWebsite = currentWebsite;
-        vm.name = currentWebsite.name;
-        vm.description = currentWebsite.description;
-        var websites = WebsiteService.findWebsitesByUser(userId);
-        vm.websites = websites;
-
+        /*var websites = WebsiteService.findWebsitesByUser(userId);
+         vm.websites = websites;*/
         vm.updateWebsite = updateWebsite;
-        function updateWebsite(name, description) {
-            vm.name = name;
-            vm.description = description;
-            var updatedWebsite = WebsiteService.updateWebsite(websiteId, {name: name, description: description});
-            $location.url("/user/" + vm.userId + "/website/");
+        vm.deleteWebsite = deleteWebsite;
+
+
+        function updateWebsite(websiteId, name, description) {
+            var promise = WebsiteService.updateWebsite(userId, websiteId, {
+                name: vm.website.name,
+                description: vm.website.description
+            });
+            promise
+                .success(function website(website) {
+                    $location.url("/user/" + vm.userId + "/website");
+                })
+                .error(function errorHandler(aaa) {
+                    console.log(aaa);
+                })
+
         }
 
-        vm.deleteWebsite = deleteWebsite;
-        function deleteWebsite(websiteId) {
-            var result = WebsiteService.deleteWebsite(websiteId);
-            if (result) {
-                $location.url("/user/" + vm.userId + "/website");
-            }
-            else {
-                vm.error = "Unable to delete website";
-            }
+
+        function deleteWebsite() {
+            var promise = WebsiteService.deleteWebsite(userId, vm.websiteId);
+            promise
+                .success(function () {
+                    $location.url("/user/" + vm.userId + "/website");
+                })
+                .error(function () {
+
+                })
+
         }
 
         vm.goToPageList = goToPageList;
         function goToPageList(website) {
-            $location.url("/user/" + userId.toString() + "/website/" + website._id.toString() + "/page");
+            console.log(website);
+            vm.website = website;
+            console.log("/user/" + userId + "/website/" + website._id + "/page");
+            $location.url("/user/" + userId.toString() + "/website/" + vm.website._id.toString() + "/page");
         }
+
+
+        function init() {
+            var promise = WebsiteService.findWebsitesByUser(userId);
+            promise
+                .success(function website(websites) {
+                    if (websites) {
+
+                        vm.websites = websites;
+                        console.log(websites);
+                    }
+
+                })
+                .error(function errorHandler(aaa) {
+                    console.log(aaa);
+                });
+
+            var findWeb = WebsiteService.findWebsiteById(userId, websiteId);
+            findWeb
+                .success(function website(website) {
+                    if (website) {
+                        vm.website = website;
+                        console.log("found website");
+                    }
+                })
+                .error(function errorHandler(aaa) {
+                    console.log(aaa);
+                })
+
+        }
+
+        init();
 
     }
 })();

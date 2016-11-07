@@ -13,16 +13,19 @@
         var websiteId = parseInt($routeParams['wid']);
         vm.websiteId = websiteId;
         vm.createPage = createPage;
-        vm.pages = PageService.findPageByWebsiteId(websiteId);
         function createPage(name) {
             var page = {_id: "0", name: name, wid: websiteId};
-            var newPage = PageService.createPage(websiteId, page);
-            if (newPage) {
-                $location.url("/user/" + userId + "/website/" + websiteId + "/page");
-            }
-            else {
-                vm.error = "Unable to create page";
-            }
+            var promise = PageService.createPage(userId, websiteId, page);
+            promise
+                .success(function page(newPage) {
+                    if (newPage) {
+                        $location.url("/user/" + userId + "/website/" + websiteId + "/page");
+                    }
+                })
+                .error(function (aaa) {
+                    console.log(aaa);
+                });
+
         }
     }
 })();

@@ -1,13 +1,12 @@
 /**
  * Created by Rizwan Mohamed on 10/19/2016.
  */
-(function(){
+(function () {
     angular
         .module("WebAppMaker")
         .controller("EditPageController", EditPageController);
 
-    function EditPageController($routeParams, PageService, $location)
-    {
+    function EditPageController($routeParams, PageService, $location) {
         var vm = this;
         var userId = $routeParams['uid'];
         vm.userId = userId;
@@ -15,33 +14,55 @@
         vm.websiteId = websiteId;
         var pageId = $routeParams['pid'];
         vm.pageId = pageId;
+
         vm.updatePage = updatePage;
-        var currentPage = PageService.findPageByWebsiteId(websiteId);
-        vm.currentPage = currentPage;
-        vm.name = currentPage.name;
-        vm.wid = currentPage.wid;
-        function updatePage(pageId, page)
-        {
-            vm.name = page.name;
-            vm.wid = page.wid;
-            var updatedPage = PageService.updatePage(pageId, page);
-            $location.url("/user/"+vm.userId+"/website/"+vm.websiteId+"/page/");
-        }
-
         vm.deletePage = deletePage;
-        function deletePage(pageId)
-        {
-            var result = PageService.deletePage(pageId);
 
-            if(result)
-            {
-                $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + "/page");
-            }
-            else
-            {
-                vm.error = "Unable to delete page";
-            }
+
+        function updatePage(userId, websiteId, pageId, name, title) {
+            var promise = PageService.updatePage(userId, websiteId, pageId, {name: vm.page.name, title: vm.page.title});
+            promise
+                .success(function page(page) {
+                    $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + "/page");
+                })
+                .error(function errorHandler(aaa) {
+                    console.log(aaa);
+                })
+
 
         }
+
+
+        function deletePage(userId, websiteId, pageId) {
+            var promise = PageService.deletePage(userId, websiteId, vm.pageId);
+            promise
+                .success(function () {
+                    $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + "/page");
+                })
+                .error(function () {
+
+                });
+
+
+        }
+
+        function init() {
+
+            var promise = PageService.findPageById(userId, websiteId, pageId);
+            promise
+                .success(function page(page) {
+                    if (page) {
+                        vm.page = page;
+                        console.log("found page");
+                    }
+                })
+                .error(function (aaa) {
+                    console.log(aaa);
+                });
+        }
+
+        init();
+
+
     }
 })();

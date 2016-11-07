@@ -29,18 +29,25 @@
                     email: vm.email
                 };
 
-                var userId = UserService.createUser(newUser);
-                vm.userId = userId;
-                //vm.registerUser = userExists;
-                $location.url("/user/" + userId);
-                /*if (user === null) {
-                 alert("User exists");
-                 }else {
-                 var userId = userExists._id;
-                 vm.userId = userId;
-                 vm.registerUser = userExists;
-                 $location.url("/user/" + userId);
-                 }*/
+
+                var promise = UserService.createUser(newUser);
+
+                promise
+                    .success(function (userExists) {
+                        if (userExists == true) {
+                            alert("User exists");
+                        }
+
+                        else {
+                            var userId = userExists._id;
+                            vm.userId = userId;
+                            vm.registerUser = userExists;
+                            $location.url("/user/" + vm.userId);
+                        }
+                    })
+                    .error(function (failure) {
+                        console.log(failure);
+                    });
             }
 
             else vm.error = "Passwords Do not match, please try again";

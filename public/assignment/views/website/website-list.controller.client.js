@@ -12,10 +12,28 @@
         vm.goToPageList = goToPageList;
         vm.userId = userId;
 
-        vm.websites = WebsiteService.findWebsitesByUser(userId);
+        function init() {
+            var promise = WebsiteService.findWebsitesByUser(userId);
+            promise
+                .success(function website(websites) {
+                    if (websites) {
+
+                        vm.websites = websites;
+                        console.log(websites);
+                    }
+
+                })
+                .error(function errorHandler(failure) {
+                    console.log(failure);
+                });
+        }
+
+        init();
 
         function goToPageList(website) {
-            $location.url("/user/" + userId.toString() + "/website/" + website._id.toString() + "/page");
+            console.log(website);
+            console.log("/user/" + userId + "/website/" + website._id + "/page");
+            $location.url("/user/" + userId + "/website/" + website._id + "/page");
         }
     }
 })();

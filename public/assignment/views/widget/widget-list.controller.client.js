@@ -15,17 +15,17 @@
         vm.websiteId = websiteId;
         var pageId = parseInt($routeParams['pid']);
         vm.pageId = pageId;
-        var widgets = WidgetService.findWidgetsByPageId(pageId);
-        vm.widgets = widgets;
+        var widgetId = parseInt($routeParams['wgid']);
+
         var widgetId = parseInt($routeParams['wgid']);
         vm.widgetId = widgetId;
-
         vm.checkSafeHtml = checkSafeHtml;
         vm.checkSafeYouTubeUrl = checkSafeYouTubeUrl;
         vm.goToChooseWidget = goToChooseWidget;
         vm.checkSafeImageSrc = checkSafeImageSrc;
         function checkSafeImageSrc(url) {
             return $sce.trustAsResourceUrl(url);
+
         }
 
         function checkSafeHtml(html) {
@@ -37,6 +37,7 @@
             var id = parts[parts.length - 1];
 
             url = "https://www.youtube.com/embed/" + id;
+
             return $sce.trustAsResourceUrl(url);
 
         }
@@ -45,5 +46,15 @@
             $location.url("user/" + userId + "/website/" + websiteId + "/page/" + pageId + "/widget/new");
         }
 
+        var promise = WidgetService.findWidgetsByPageId(userId, websiteId, pageId);
+        promise
+            .success(function widgets(widgets) {
+
+                vm.widgets = widgets;
+            })
+            .error(function (failure) {
+                console.log("list of widgets seems to be empty, check the widget service server and client. The empty list should be sent from there.");
+                console.log(failure);
+            });
     }
 })();
