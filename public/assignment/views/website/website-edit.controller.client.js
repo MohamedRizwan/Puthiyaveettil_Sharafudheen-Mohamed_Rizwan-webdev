@@ -4,8 +4,8 @@
 (function () {
     angular
         .module("WebAppMaker")
-        .controller("editWebsiteController", editWebsiteController);
-    function editWebsiteController($routeParams, WebsiteService, $location) {
+        .controller("EditWebsiteController", EditWebsiteController);
+    function EditWebsiteController($routeParams, WebsiteService, $location) {
         var vm = this;
         var userId = parseInt($routeParams['uid']);
         vm.userId = userId;

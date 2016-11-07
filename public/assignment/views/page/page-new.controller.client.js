@@ -13,6 +13,21 @@
         var websiteId = parseInt($routeParams['wid']);
         vm.websiteId = websiteId;
         vm.createPage = createPage;
+        //vm.pages = PageService.findPageByWebsiteId(websiteId);
+        var promise = PageService.findPageByWebsiteId(userId, websiteId);
+        promise
+            .success(function pages(pages) {
+                if (pages != '0') {
+                    vm.pages = pages;
+
+                    var userId = parseInt($routeParams['uid']);
+                    vm.pages = pages;
+                }
+            })
+            .error(function errorHandler(aaa) {
+                console.log(aaa);
+            })
+
         function createPage(name) {
             var page = {_id: "0", name: name, wid: websiteId};
             var promise = PageService.createPage(userId, websiteId, page);
