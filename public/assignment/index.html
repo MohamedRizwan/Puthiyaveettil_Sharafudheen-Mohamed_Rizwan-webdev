@@ -38,6 +38,21 @@
     <script src="services/widget.service.client.js"></script>
     <script src="directives/jga-directives.js"></script>
 
+    <script type="application/javascript">
+        function previewImage(element) {
+            var preview = document.querySelector('img');
+            var file    = document.querySelector('input[type=file]').files[0];
+            var reader  = new FileReader();
+            reader.addEventListener("load", function () {
+                preview.src = reader.result;
+                $('#imageUploadForm').submit();
+            }, false);
+            if (file) {
+                reader.readAsDataURL(file);
+            }
+        }
+    </script>
+
 </head>
 <body>
 <div ng-view>

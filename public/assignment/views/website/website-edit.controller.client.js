@@ -26,8 +26,8 @@
                 .success(function website(website) {
                     $location.url("/user/" + vm.userId + "/website");
                 })
-                .error(function errorHandler(aaa) {
-                    console.log(aaa);
+                .error(function errorHandler(err) {
+                    console.log(err);
                 })
 
         }
@@ -65,8 +65,8 @@
                     }
 
                 })
-                .error(function errorHandler(aaa) {
-                    console.log(aaa);
+                .error(function errorHandler(err) {
+                    console.log(err);
                 });
 
             var findWeb = WebsiteService.findWebsiteById(userId, websiteId);
@@ -77,8 +77,8 @@
                         console.log("found website");
                     }
                 })
-                .error(function errorHandler(aaa) {
-                    console.log(aaa);
+                .error(function errorHandler(err) {
+                    console.log(err);
                 })
 
         }

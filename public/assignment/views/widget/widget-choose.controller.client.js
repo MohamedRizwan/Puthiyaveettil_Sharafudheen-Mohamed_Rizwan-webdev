@@ -68,8 +68,9 @@
                 "url": null,
                 "imageData": ""
             };
-            var promise = WidgetService.createWidget(userId, websiteId, pageId, widget);
+            //var promise = WidgetService.createWidget(userId, websiteId, pageId, widget);
             vm.widget = widget;
+            var promise = WidgetService.createWidget(vm.userId, vm.websiteId, vm.pageId, vm.widget);
             console.log(widget);
             promise
                 .success(function newImageWidget(newImageWidget) {

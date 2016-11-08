@@ -24,8 +24,8 @@
                     vm.pages = pages;
                 }
             })
-            .error(function errorHandler(aaa) {
-                console.log(aaa);
+            .error(function errorHandler(err) {
+                console.log(err);
             })
 
         function createPage(name) {
@@ -37,8 +37,8 @@
                         $location.url("/user/" + userId + "/website/" + websiteId + "/page");
                     }
                 })
-                .error(function (aaa) {
-                    console.log(aaa);
+                .error(function (err) {
+                    console.log(err);
                 });
 
         }

@@ -25,8 +25,8 @@
                 .success(function page(page) {
                     $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + "/page");
                 })
-                .error(function errorHandler(aaa) {
-                    console.log(aaa);
+                .error(function errorHandler(err) {
+                    console.log(err);
                 })
 
 
@@ -56,8 +56,8 @@
                         console.log("found page");
                     }
                 })
-                .error(function (aaa) {
-                    console.log(aaa);
+                .error(function (err) {
+                    console.log(err);
                 });
         }
 

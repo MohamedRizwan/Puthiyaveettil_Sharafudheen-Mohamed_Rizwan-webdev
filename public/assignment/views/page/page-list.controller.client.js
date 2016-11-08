@@ -30,8 +30,8 @@
                     }
                 }
             })
-            .error(function errorHandler(aaa) {
-                console.log(aaa);
+            .error(function errorHandler(err) {
+                console.log(err);
             })
 
     }

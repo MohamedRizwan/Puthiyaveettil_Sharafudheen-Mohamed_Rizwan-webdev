@@ -31,12 +31,12 @@
         <input  name="widgetId" value="123"   style="display: none"/><br>
         <!--<button type="submit"   class="btn btn-block btn-primary">Upload Image</button>-->
     </form>
-    <form action="/api/example/upload" id="imageUploadForm" method="post" enctype="multipart/form-data">
+    <form action="/api/upload" id="imageUploadForm" method="post" enctype="multipart/form-data">
         <input  name="myFile" onchange="previewImage(this)" type="file" class="form-control"/>
         <img src="{{model.widget.url}}" width="100px">
     </form>
 
-    <a class="btn btn-primary btn-block form-control"
+    <a type="submit" class="btn btn-primary btn-block form-control"
        ng-click = "model.updateImageWidget(model.widgetId, model.widget)">
         Submit</a>
 
@@ -44,31 +44,5 @@
        ng-click = "model.deleteWidget(model.widgetId)">
         Delete Widget</a>
 
-    <div class="row">
-        <div class="col-xs-12">
-            <a class="btn btn-danger btn-block form-control"
-               href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget">
-                Delete Widget</a>
-        </div>
-    </div>
-
 
 </div>
-
-<script type="application/javascript">
-    function previewImage(element) {
-        var preview = document.querySelector('img');
-        var file    = document.querySelector('input[type=file]').files[0];
-        var reader  = new FileReader();
-        reader.addEventListener("load", function () {
-            preview.src = reader.result;
-            $('#imageUploadForm').submit();
-        }, false);
-        if (file) {
-            reader.readAsDataURL(file);
-        }
-    }
-
-</script>
-
-<!--</div>-->

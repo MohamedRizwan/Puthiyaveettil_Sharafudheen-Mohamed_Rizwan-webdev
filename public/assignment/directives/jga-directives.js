@@ -3,7 +3,7 @@
  */
 (function(){
     angular
-        .module("utility", [])
+        .module("jga-directives", [])
         .directive("sortable", sortable);
 
     function sortable()
@@ -46,8 +46,6 @@
 
         function sort(start, stop, userId, websiteId, pageId)
         {
-            console.log(start+" start index from widget utility");
-            console.log(stop+" stop index from widget utility");
             WidgetService.sort(start, stop, userId, websiteId, pageId);
         }
     }

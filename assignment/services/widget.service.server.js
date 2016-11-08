@@ -27,9 +27,23 @@ module.exports = function (app) {
         ];
 
     var tmpWidgets = [];
+    var mime = require('mime');  // npm install mime --save
+    //var multer = require('multer'); // npm install multer --save
+
+    // var upload = multer({ dest: __dirname+'/../../public/assignment/uploads' });
+    // Saving image with extension
+   /* var storage = multer.diskStorage({
+        destination: function (req, file, cb) {
+            cb(null, __dirname+'/../../public/assignment/uploads')
+        },
+        filename: function (req, file, cb) {
+            cb(null, file.fieldname + '-' + Date.now() + '.' + mime.extension(file.mimetype));
+        }
+    });
+    var upload = multer({ storage: storage });*/
 
     var multer = require('multer'); // npm install multer --save
-    var upload = multer({dest: __dirname + '/../upload'});
+    var upload = multer({dest: __dirname + '/../../public/assignment/uploads'});
     app.post("/api/user/:uid/website/:wid/page/:pid/widget", createWidget);
     app.get("/api/user/:uid/website/:wid/page/:pid/widget", findWidgetsByPageId);
     app.get("/api/user/:uid/website/:wid/page/:pid/widget/:wgid", findWidgetById);
@@ -47,6 +61,48 @@ module.exports = function (app) {
         console.log([start, stop]);
     }
 
+    /*function uploadImage(req, res) {
+        var userId        = req.body.userId;
+        var websiteId     = req.body.websiteId;
+        var pageId        = req.body.pageId;
+        var widgetId      = req.body.widgetId;
+        var width         = req.body.width;
+        var myFile        = req.file;
+
+
+        if (!myFile) {
+            res.redirect("/assignment/#/user/" + userId +
+                "/website/" + websiteId +
+                "/page/" + pageId +
+                "/widget/" + widgetId);
+            return;
+        }
+
+        var originalname  = myFile.originalname; // file name on user's computer
+        var filename      = myFile.filename;     // new file name in upload folder
+        var path          = myFile.path;         // full path of uploaded file
+        var destination   = myFile.destination;  // folder where file is saved to
+        var size          = myFile.size;
+        var mimetype      = myFile.mimetype;
+
+        for (var w in widgets) {
+            if (widgets[w]._id == widgetId) {
+                widgets[w].name = originalname;
+                widgets[w].width = width;
+                widgets[w].url = "/assignment/uploads/" + filename;
+                res.redirect("/assignment/#/user/" + userId +
+                    "/website/" + websiteId +
+                    "/page/" + pageId +
+                    "/widget/" + widgetId);
+                return;
+            }
+        }
+        res.redirect("/assignment/#/user/" + userId +
+            "/website/" + websiteId +
+            "/page/" + pageId +
+            "/widget/" + widgetId);
+    }*/
+
     function uploadImage(req, res) {
         var widgetId = req.body.widgetId;
         var userId = req.body.userId;
@@ -63,19 +119,23 @@ module.exports = function (app) {
         for (var wg in widgets) {
             if (widgets[wg]._id == widgetId) {
                 widgets[wg].url = '/../assignment/upload' + filename;
-                res.send(widgets[wg]);
+                //res.send(widgets[wg]);
+                break;
             }
         }
         for (var wg in tmpWidgets) {
             if (tmpWidgets[wg]._id == widgetId) {
-                var toupdate = tmpWidgets[wg];
+                /*var toupdate = tmpWidgets[wg];
                 toupdate.url = '/../assignment/upload' + filename;
                 tmpWidgets = [];
                 tmpWidgets.push(toupdate)
                 console.log(tmpWidgets);
-                res.send(toupdate);
+                res.send(toupdate);*/
+                tmpWidgets[wg].url = '/../assignment/upload'+filename;
+                break;
             }
         }
+        res.redirect(req.referrer);
     }
 
     function createWidget(req, res) {

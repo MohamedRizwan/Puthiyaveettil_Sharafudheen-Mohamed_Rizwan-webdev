@@ -13,7 +13,6 @@
             var promise = UserService.findUserByCredentials(username, password);
             promise
                 .success(function (user) {
-                    /*console.log(aaa);*/
                     if (user === '0') {
                         vm.error = "No such user";
                     }
@@ -23,8 +22,8 @@
                     }
 
                 })
-                .error(function (bbb) {
-                    console.log(bbb);
+                .error(function (err) {
+                    console.log(err);
                 })
 
         }
