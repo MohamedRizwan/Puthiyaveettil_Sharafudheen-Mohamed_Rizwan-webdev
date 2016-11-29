@@ -9,15 +9,15 @@
     function WidgetListController($routeParams, WidgetService,
                                   $location, $sce) {
         var vm = this;
-        var userId = parseInt($routeParams['uid']);
+        var userId = $routeParams['uid'];
         vm.userId = userId;
-        var websiteId = parseInt($routeParams['wid']);
+        var websiteId = $routeParams['wid'];
         vm.websiteId = websiteId;
-        var pageId = parseInt($routeParams['pid']);
+        var pageId = $routeParams['pid'];
         vm.pageId = pageId;
-        var widgetId = parseInt($routeParams['wgid']);
+        //var widgetId = parseInt($routeParams['wgid']);
 
-        var widgetId = parseInt($routeParams['wgid']);
+        var widgetId = $routeParams['wgid'];
         vm.widgetId = widgetId;
         vm.checkSafeHtml = checkSafeHtml;
         vm.checkSafeYouTubeUrl = checkSafeYouTubeUrl;
@@ -48,9 +48,9 @@
 
         var promise = WidgetService.findWidgetsByPageId(userId, websiteId, pageId);
         promise
-            .success(function widgets(widgets) {
+            .success(function widgets(page) {
 
-                vm.widgets = widgets;
+                vm.widgets = page.widgets;
             })
             .error(function (failure) {
                 console.log("list of widgets seems to be empty, check the widget service server and client. The empty list should be sent from there.");

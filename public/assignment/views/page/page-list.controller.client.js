@@ -13,14 +13,16 @@
         /*var pages = PageService.findPageByWebsiteId(websiteId);*/
         var promise = PageService.findPageByWebsiteId(userId, websiteId);
         promise
-            .success(function pages(pages) {
-                if (pages != '0') {
-                    vm.pages = pages;
+            .success(function pages(website) {
+                if (website.pages != '0') {
+                    vm.pages = website.pages;
 
-                    var userId = parseInt($routeParams['uid']);
+                    //var userId = parseInt($routeParams['uid']);
+                    console.log(website.pages);
+                    var userId = $routeParams['uid'];
                     vm.websiteId = $routeParams['wid'];
                     vm.userId = userId;
-                    vm.pages = pages;
+                    //vm.pages = pages;
                     vm.goToWidgetList = goToWidgetList;
                     function goToWidgetList(page) {
 

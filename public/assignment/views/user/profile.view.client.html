@@ -8,7 +8,7 @@
             </div>
             <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
                 <p class="navbar-text pull-right">
-                    <a ng-click="model.updateUser(model.user.username, model.user.email, model.user.first, model.user.last)"
+                    <a ng-click="model.updateUser(model.userId, model.user)"
                        class="navbar-link">
                         <span class="glyphicon glyphicon-ok"/>
                     </a>
@@ -32,21 +32,25 @@
         </div>
         <div class="form-group">
             <label for="first-name">First Name</label>
-            <input ng-model="model.user.first" type="text" class="form-control" id="first-name" placeholder="Alice">
+            <input ng-model="model.user.firstName" type="text" class="form-control" id="first-name" placeholder="Alice">
         </div>
         <div class="form-group">
             <label for="last-name">Last Name</label>
-            <input ng-model="model.user.last" type="text" class="form-control" id="last-name" placeholder="Wonderland">
+            <input ng-model="model.user.lastName" type="text" class="form-control" id="last-name" placeholder="Wonderland">
         </div>
     </form>
 
 
     <a class="btn btn-primary btn-block"
-       href="#/user/{{model.user._id}}/website">Websites</a>
+       href="#/user/{{model.userId}}/website">Websites</a>
     <a class="btn btn-danger  btn-block"
        href="#/login">Logout</a>
     <a class="btn btn-danger  btn-block"
        ng-click="model.deleteUser(model.userId)">Delete Profile</a>
+</div>
+
+<div ng-show = "model.success" class ="alert alert-success" role="alert">
+    {{model.success}}
 </div>
 
 <nav class="navbar navbar-default navbar-fixed-bottom">

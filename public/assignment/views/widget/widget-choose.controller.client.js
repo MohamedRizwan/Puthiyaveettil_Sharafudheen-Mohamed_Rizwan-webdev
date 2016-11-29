@@ -8,18 +8,18 @@
 
     function NewWidgetController($routeParams, $location, WidgetService) {
         var vm = this;
-        var userId = parseInt($routeParams['uid']);
+        var userId = $routeParams['uid'];
         vm.userId = userId;
-        var websiteId = parseInt($routeParams['wid']);
+        var websiteId = $routeParams['wid'];
         vm.websiteId = websiteId;
-        var pageId = parseInt($routeParams['pid']);
+        var pageId = $routeParams['pid'];
         vm.pageId = pageId;
 
         console.log(pageId)
 
         vm.createHeaderWidget = createHeaderWidget;
         function createHeaderWidget() {
-            var widget = {"_id": 0, "widgetType": "HEADER", "pageId": pageId, "size": 2, "text": " "};
+            var widget = {"widgetType": "HEADER", "pageId": pageId, "size": 2, "text": " "};
             var promise = WidgetService.createWidget(userId, websiteId, pageId, widget);
 
             promise
@@ -39,7 +39,7 @@
 
         vm.createHtmlWidget = createHtmlWidget;
         function createHtmlWidget() {
-            var widget = {"_id": 0, "widgetType": "HTML", "pageId": pageId, "text": " "};
+            var widget = {"widgetType": "HTML", "pageId": pageId, "text": " "};
             var promise = WidgetService.createWidget(userId, websiteId, pageId, widget);
 
 
@@ -61,7 +61,6 @@
         vm.createImageWidget = createImageWidget;
         function createImageWidget() {
             var widget = {
-                "_id": 0,
                 "widgetType": "IMAGE",
                 "pageId": pageId,
                 "width": 100,
@@ -90,7 +89,6 @@
         vm.createYoutubeWidget = createYoutubeWidget;
         function createYoutubeWidget() {
             var widget = {
-                "_id": 0,
                 "widgetType": "YOUTUBE",
                 "pageId": pageId,
                 "width": 100,

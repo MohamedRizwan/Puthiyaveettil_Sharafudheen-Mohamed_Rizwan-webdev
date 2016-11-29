@@ -93,3 +93,27 @@ body {
     height: -moz-calc(100vh - 130px); /* Firefox */
     height: -webkit-calc(100vh - 130px); /* Chrome, Safari */
 }
+
+.widgetRender
+{
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin-bottom: 0px;
+    margin-top: 10px;
+}
+
+.youtube-widget
+{
+    position: relative;
+    padding-bottom: 45.25%; /* 16:9 */
+    height: 0;
+}
+
+.youtube-widget iframe
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 85%;
+    height: 100%;
+}

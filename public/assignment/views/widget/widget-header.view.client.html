@@ -1,12 +1,12 @@
 <div class="container form-group" id="newPageSpaceMaker">
     <form class="form-group" class="newWebsiteSpaceMaker" id="websitelistSpaceMaker">
         <label for="text">Text</label>
-        <input id="text" ng-model="model.currentWidget.text" placeholder="Heading" value="{{model.currentWidget.text}}">
+        <input id="text" ng-model="model.widget.text" placeholder="Heading" value="{{model.widget.text}}">
     </form>
     <div>
 
         <a class="btn btn-danger btn-block form-control"
-           ng-click="model.deleteWidget(model.currentWidget._id)">
+           ng-click="model.deleteWidget(model.widget._id)">
             Delete Widget</a>
     </div>
 </div>
