@@ -73,6 +73,25 @@
 
             }
 
+            else if (widget.widgetType.toString() == "INPUT") {
+
+                var promise = WidgetService.updateWidget(userId, websiteId, pageId, widgetId, widget);
+                promise
+                    .success(function updatedWidget(updatedWidget) {
+                        if (updatedWidget) {
+                            vm.widget = updatedWidget;
+                            $location.url("/user/" + vm.userId + "/website/" +
+                                vm.websiteId + "/page/" + vm.pageId + "/widget");
+                        }
+                    })
+                    .error(function (failure) {
+                        console.log("header widget could not be updated");
+                        console.log(failure);
+                    })
+
+
+            }
+
             else if (widget.widgetType.toString() == "HTML") {
 
                 var promise = WidgetService.updateWidget(userId, websiteId, pageId, widgetId, {text: widget.text});

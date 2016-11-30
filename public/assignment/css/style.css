@@ -105,7 +105,7 @@ body {
 .youtube-widget
 {
     position: relative;
-    padding-bottom: 45.25%; /* 16:9 */
+    padding-bottom: 50.25%; /* 16:9 */
     height: 0;
 }
 

@@ -36,6 +36,25 @@
 
         }
 
+        vm.createTextWidget = createTextWidget;
+        function createTextWidget() {
+            var widget = {"widgetType": "INPUT", "pageId": pageId, "text": " ", placeholder:" ", rows: " ", formatted:""};
+            var promise = WidgetService.createWidget(userId, websiteId, pageId, widget);
+
+            promise
+                .success(function headerWidget(newHeaderWidget) {
+                    if (newHeaderWidget) {
+                        $location.url("/user/" + vm.userId + "/website/" +
+                            vm.websiteId + "/page/" + vm.pageId + "/widget/" + newHeaderWidget._id);
+                    }
+                })
+                .error(function (failure) {
+                    console.log("header widget could not be created");
+                    console.log(failure);
+                })
+
+        }
+
 
         vm.createHtmlWidget = createHtmlWidget;
         function createHtmlWidget() {

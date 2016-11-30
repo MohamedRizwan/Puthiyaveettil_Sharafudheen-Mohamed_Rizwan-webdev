@@ -42,9 +42,7 @@
             <h5 ng-switch-when = "5">{{widget.text}}</h5>
             <h6 ng-switch-when = "6">{{widget.text}}</h6>
         </div>
-        <div ng-switch-when = "YOUTUBE">
-            <!--<iframe class="embed-responsive-item" width="560" height="315" ng-src="{{model.checkSafeYouTubeUrl(widget.url)}}"
-                    frameborder="0" allowfullscreen></iframe>-->
+        <div ng-switch-when = "YOUTUBE" class="youtube-widget">
             <iframe class="embed-responsive-item" width="{{widget.size}}" ng-src="{{model.checkSafeYouTubeUrl(widget.url)}}"></iframe>
         </div>
         <div ng-switch-when = "IMAGE">
@@ -52,6 +50,17 @@
         </div>
         <div ng-switch-when = "HTML" ng-bind-html = "model.checkSafeHtml(widget.text)">
             {{widget.text}}
+        </div>
+
+        <div ng-switch-when="INPUT">
+            <div ng-if="widget.formatted" text-angular ng-model="widget.text" ta-toolbar="[['h1','h2','h3'],['bold','italics','underline','strikeThrough'],
+                              ['ul','ol'],['justifyLeft','justifyCenter','justifyRight','justifyFull'],
+                              ['indent','outdent'],['html']]"/>
+            <input ng-if="!widget.formatted && (!widget.rows || widget.rows===1)"
+                   placeholder="{{widget.placeholder}}" value="{{widget.text}}" class="form-control"/>
+            <textarea ng-if="!widget.formatted && (widget.rows > 1)"
+                      rows="{{widget.rows}}" placeholder="{{widget.placeholder}}"
+                      class="form-control">{{widget.text}}</textarea>
         </div>
 
         <div ng-switch-default>Unknown widget</div>
