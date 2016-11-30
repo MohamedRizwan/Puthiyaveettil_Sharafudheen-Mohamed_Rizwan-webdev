@@ -24,7 +24,6 @@
 
 
 <div class="container-fluid spaceMaker" sortable userId="{{model.userId}}" websiteID="{{model.websiteId}}" pageId="{{model.pageId}}">
-
     <div ng-switch = "widget.widgetType" class = "wam-widget"
          ng-repeat = "widget in model.widgets" class = "row">
         <div style="float: right;margin-left: 5px;">
@@ -44,8 +43,9 @@
             <h6 ng-switch-when = "6">{{widget.text}}</h6>
         </div>
         <div ng-switch-when = "YOUTUBE">
-            <iframe width="560" height="315" ng-src="{{model.checkSafeYouTubeUrl(widget.url)}}"
-                    frameborder="0" allowfullscreen></iframe>
+            <!--<iframe class="embed-responsive-item" width="560" height="315" ng-src="{{model.checkSafeYouTubeUrl(widget.url)}}"
+                    frameborder="0" allowfullscreen></iframe>-->
+            <iframe class="embed-responsive-item" width="{{widget.size}}" ng-src="{{model.checkSafeYouTubeUrl(widget.url)}}"></iframe>
         </div>
         <div ng-switch-when = "IMAGE">
             <img ng-src="{{model.checkSafeImageSrc(widget.url)}}" width="widget.width"/>

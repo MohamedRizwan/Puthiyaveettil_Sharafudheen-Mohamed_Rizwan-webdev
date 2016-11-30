@@ -28,7 +28,6 @@
 <div class="container">
 
     <div class="container">
-        {{model.widget}}
         <div ng-if="model.widget.widgetType" ng-include="'views/widget/widget-'+model.widget.widgetType.toLowerCase()+'.view.client.html'"></div>
     </div>
 </div>

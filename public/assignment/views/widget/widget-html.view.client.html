@@ -12,18 +12,23 @@
         <a class="btn btn-danger btn-block" ng-click="model.deleteWidget()">Delete</a>
     </form>
 </div>-->
-<h1 class = "widgetRender">HTML WIDGET</h1>
-<div ng-model="model.widget.text"
-     text-angular
-     ta-toolbar="[['h1','h2','h3'],['bold','italics','underline','strikeThrough'],
+<div class="container">
+    <form>
+        <h1 class="widgetRender">HTML WIDGET</h1>
+        <div ng-model="model.widget.text"
+             text-angular
+             ta-toolbar="[['h1','h2','h3'],['bold','italics','underline','strikeThrough'],
         ['ul','ol'],['justifyLeft','justifyCenter','justifyRight','justifyFull'],
         ['indent','outdent'],['html']]">
-</div>
+        </div>
 
-<a class="btn btn-primary btn-block form-group"
-   ng-click="model.updateWidget(model.widgetId, model.widget)">
-    Submit
-</a>
-<a ng-if="!model.widget.isNew" ng-click="model.deleteWidget(model.widgetId)" class="btn btn-danger btn-block form-group">
-    Delete Widget
-</a>
+        <a class="btn btn-primary btn-block form-group"
+           ng-click="model.updateWidget(model.widgetId, model.widget)">
+            Submit
+        </a>
+        <a ng-if="!model.widget.isNew" ng-click="model.deleteWidget(model.widgetId)"
+           class="btn btn-danger btn-block form-group">
+            Delete Widget
+        </a>
+    </form>
+</div>

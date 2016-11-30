@@ -12,7 +12,7 @@ module.exports = function(){
         findWidgetById: findWidgetById,
         updateWidget: updateWidget,
         deleteWidget: deleteWidget,
-        // reOrderWidget: reOrderWidget,
+        reOrderWidget: reOrderWidget,
         setModel: setModel
 
     }
@@ -25,7 +25,14 @@ module.exports = function(){
 
     function findAllWidgetsForPage(pageId)
     {
-        return model.pageModel.findAllWidgetsForPage(pageId);
+        //return model.pageModel.findAllWidgetsForPage(pageId);
+        return model.pageModel
+            .findPageById(pageId)
+            .then(
+                function (pageObj) {
+                    return WidgetModel.find({_page: pageObj}).sort('order');
+                }
+            );
     }
 
     function createWidget(pageId, widget)
@@ -61,5 +68,18 @@ module.exports = function(){
     function deleteWidget(widgetId)
     {
         return WidgetModel.remove({_id: widgetId});
+    }
+
+    function reOrderWidget(pageId, start, end){
+        return findAllWidgetsForPage(pageId)
+            .then(function(pageWidgets){
+                pageWidgets.splice(end, 0, pageWidgets.splice(start, 1)[0]);
+                for(wgid in pageWidgets){
+                    pageWidgets[wgid].order = parseInt(wgid) + 1;
+                    pageWidgets[wgid].save();
+                }
+
+            });
+
     }
 }

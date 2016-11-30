@@ -35,9 +35,23 @@ module.exports = function (app, model) {
     function updateWidgetPosition(req, res) {
         var start = req.query.start;
         var stop = req.query.stop;
-        widgets.splice(stop, 0, widgets.splice(start, 1)[0]);
+        var pageId = reg.params.pid;
+
+        model
+            .widgetModel
+            .reOrderWidget(pageId, start, stop)
+            .then(
+                function(status){
+                    res.sendStatus(200);
+                },
+                function(error){
+                    res.sendStatus(400).send(error);
+                }
+            );
+
+        /*widgets.splice(stop, 0, widgets.splice(start, 1)[0]);
         res.send(widgets);
-        console.log([start, stop]);
+        console.log([start, stop]);*/
     }
 
     function uploadImage(req, res) {
@@ -198,7 +212,7 @@ module.exports = function (app, model) {
 
     function findWidgetsByPageId(req, res) {
 
-        var pageId = req.body._page;
+        var pageId = req.params['pid'];
         model
             .widgetModel
             .findAllWidgetsForPage(pageId)

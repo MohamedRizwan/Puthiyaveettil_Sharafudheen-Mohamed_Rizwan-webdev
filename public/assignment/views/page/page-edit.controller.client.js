@@ -19,7 +19,7 @@
         vm.deletePage = deletePage;
 
 
-        function updatePage(userId, websiteId, pageId, name, title) {
+        function updatePage() {
             var promise = PageService.updatePage(userId, websiteId, pageId, {name: vm.page.name, title: vm.page.title});
             promise
                 .success(function page(page) {
@@ -58,6 +58,17 @@
                 })
                 .error(function (err) {
                     console.log(err);
+                });
+
+            var pagesPromise = PageService.findPageByWebsiteId(userId,websiteId);
+            pagesPromise
+                .success(function page(website) {
+                    if (website.pages) {
+                        vm.pages = website.pages;
+                    }
+                })
+                .error(function errorHandler(failure) {
+                    console.log(failure);
                 });
         }
 

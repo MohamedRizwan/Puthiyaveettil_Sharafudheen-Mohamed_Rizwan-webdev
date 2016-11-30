@@ -48,10 +48,10 @@ module.exports = function (app, model) {
 
     function findWebsiteById(req, res) {
         var websiteId = req.params.wid;
-        var userId = req.params.uid;
+        //var userId = req.params.uid;
         model
             .websiteModel
-            .findWebsiteById(userId, websiteId)
+            .findWebsiteById(websiteId)
             .then(function (website) {
                 if (website) {
                     res.send(website)

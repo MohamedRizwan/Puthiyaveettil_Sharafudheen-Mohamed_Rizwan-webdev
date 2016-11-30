@@ -27,7 +27,25 @@
                     console.log(err);
                 });
         }
+
+        function init() {
+            var promise = PageService.findPageByWebsiteId(userId,websiteId);
+            promise
+                .success(function page(website) {
+                    if (website.pages) {
+                        vm.pages = website.pages;
+                    }
+                })
+                .error(function errorHandler(failure) {
+                    console.log(failure);
+                });
+
+        }
+
+        init();
     }
+
+
 })();
 /*
  (function () {

@@ -57,10 +57,19 @@ module.exports = function(){
         return model.websiteModel.findPagesForWebsite(websiteId);
     }
 
-    function updatePage(pageId, page)
+   /* function updatePage(pageId, page)
     {
 
         return PageModel.update({_id: pageId}, {name: page.name, title: page.title})
+    }*/
+
+    function updatePage(pageId, page) {
+        return PageModel.update({
+            _id: pageId
+        }, {
+            name: page.name,
+            title: page.title
+        })
     }
 
     function deletePage(pageId)
