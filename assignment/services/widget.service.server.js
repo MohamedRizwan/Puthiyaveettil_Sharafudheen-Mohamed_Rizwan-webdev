@@ -35,7 +35,7 @@ module.exports = function (app, model) {
     function updateWidgetPosition(req, res) {
         var start = req.query.start;
         var stop = req.query.stop;
-        var pageId = reg.params.pid;
+        var pageId = req.params.pid;
 
         model
             .widgetModel

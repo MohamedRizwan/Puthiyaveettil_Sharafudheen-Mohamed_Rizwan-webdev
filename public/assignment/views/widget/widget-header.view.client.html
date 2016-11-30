@@ -1,10 +1,21 @@
 <div class="container form-group" id="newPageSpaceMaker">
-    <form class="form-group" class="newWebsiteSpaceMaker" id="websitelistSpaceMaker">
+    <form class="newWebsiteSpaceMaker" id="websitelistSpaceMaker">
+        <div class="form-group">
+            <label for="text">Text</label>
+            <input id="text" ng-model="model.widget.text" placeholder="Heading" value="{{model.widget.text}}">
+        </div>
+        <div class="form-group">
+            <label for="text">Size</label>
+            <input id="size" type="number" name="size" min="1" max="6" ng-model="model.widget.size" placeholder="2" value="{{model.widget.text}}">
+        </div>
+
+    </form>
+    <!--<form class="form-group" class="newWebsiteSpaceMaker" id="websitelistSpaceMaker">
         <label for="text">Text</label>
         <input id="text" ng-model="model.widget.text" placeholder="Heading" value="{{model.widget.text}}">
         <label for="text">Size</label>
         <input id="size" type="number" name="size" min="1" max="6" ng-model="model.widget.size" placeholder="2" value="{{model.widget.text}}">
-    </form>
+    </form>-->
     <div>
 
         <a class="btn btn-danger btn-block form-control"
