@@ -46,17 +46,6 @@
             $location.url("user/" + userId + "/website/" + websiteId + "/page/" + pageId + "/widget/new");
         }
 
-        /*var promise = WidgetService.findWidgetsByPageId(userId, websiteId, pageId);
-        promise
-            .success(function widgets(page) {
-
-                vm.widgets = page.widgets;
-            })
-            .error(function (failure) {
-                console.log("list of widgets seems to be empty, check the widget service server and client. The empty list should be sent from there.");
-                console.log(failure);
-            });*/
-
         function init() {
             WidgetService
                 .findWidgetsByPageId(vm.userId, vm.websiteId, vm.pageId)

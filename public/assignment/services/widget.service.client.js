@@ -68,8 +68,6 @@
             var url = "/api/user/"+userId+"/website/"+websiteId+"/page/"+pageId+"/widget?start=START&stop=STOP";
             url = url.replace("START", start)
                 .replace("STOP", stop);
-            console.log(start + "start");
-            console.log(stop + "stop");
             $http.put(url);
         }
     }

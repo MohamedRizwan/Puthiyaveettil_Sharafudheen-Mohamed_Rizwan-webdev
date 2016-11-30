@@ -101,9 +101,7 @@
                     console.log("image widget could not be created");
                     console.log(failure);
                 });
-
         }
-
 
         vm.createYoutubeWidget = createYoutubeWidget;
         function createYoutubeWidget() {

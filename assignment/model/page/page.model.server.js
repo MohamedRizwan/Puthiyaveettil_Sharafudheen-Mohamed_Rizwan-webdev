@@ -59,7 +59,6 @@ module.exports = function(){
 
    /* function updatePage(pageId, page)
     {
-
         return PageModel.update({_id: pageId}, {name: page.name, title: page.title})
     }*/
 
@@ -83,6 +82,4 @@ module.exports = function(){
             .populate("widgets")
             .exec();
     }
-
-
 }

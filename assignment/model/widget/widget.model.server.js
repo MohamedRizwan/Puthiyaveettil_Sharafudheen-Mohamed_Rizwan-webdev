@@ -22,7 +22,6 @@ module.exports = function(){
     function setModel(_model)
     {
         model = _model;
-        //TODO:
         WidgetModel.find().sort({order:-1})
             .then(function (widgets) {
                 if(widgets.length > 0)
@@ -34,7 +33,6 @@ module.exports = function(){
 
     function findAllWidgetsForPage(pageId)
     {
-        //return model.pageModel.findAllWidgetsForPage(pageId);
         return model.pageModel
             .findPageById(pageId)
             .then(
