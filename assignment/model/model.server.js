@@ -3,7 +3,13 @@
  */
 module.exports = function(){
     var mongoose = require('mongoose');
-    mongoose.connect('mongodb://127.0.0.1:27017/wam-fall-2016');
+    var connectionString="mongodb://127.0.0.1:27017/wam-fall-2016";
+
+    if(process.env.NODE_ENV == "prod") {
+        connectionString = "mongodb://mrizwan:mrizwan~123@ds035806.mlab.com:35806/webdevdb";
+    }
+
+    mongoose.connect(connectionString);
     var userModel = require("./user/user.model.server")();
     var websiteModel = require("./website/website.model.server")();
     var pageModel = require("./page/page.model.server")();

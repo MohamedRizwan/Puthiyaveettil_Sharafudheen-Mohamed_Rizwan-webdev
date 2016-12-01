@@ -22,11 +22,7 @@
         ['indent','outdent'],['html']]">
         </div>
 
-        <a class="btn btn-primary btn-block form-group"
-           ng-click="model.updateWidget(model.widgetId, model.widget)">
-            Submit
-        </a>
-        <a ng-if="!model.widget.isNew" ng-click="model.deleteWidget(model.widgetId)"
+        <a ng-click="model.deleteWidget(model.widgetId)"
            class="btn btn-danger btn-block form-group">
             Delete Widget
         </a>

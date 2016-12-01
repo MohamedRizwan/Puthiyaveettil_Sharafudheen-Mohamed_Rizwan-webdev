@@ -48,7 +48,6 @@ app.use(function (req, res, next) {
 
 // configure a public directory to host static content
 app.use(express.static(__dirname + '/public'));
-
 //require ("./test/app.js")(app);
 require("./upload test/app.js")(app);
 
