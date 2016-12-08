@@ -12,7 +12,7 @@
                 Edit Widget
             </p>
             <p class="navbar-text pull-right widgetGlyphAligner" id="webListPlus">
-                <a ng-click="model.updateWidget(model.widgetId, model.currentWidget)" class="navbar-link">
+                <a ng-click="model.updateWidget(model.widgetId, model.widget)" class="navbar-link">
           <span class="glyphicon glyphicon-ok glyphColorRectifier glyphPosRectifier">
           </span>
                 </a>
@@ -25,10 +25,10 @@
 <div ng-show="model.error" class="alert alert-danger" role="alert">
     {{model.error}}
 </div>
-<div class="container">
+<div class="container-fluid">
 
-    <div class="container">
-        <div ng-include="'views/widget/widget-'+model.widget.widgetType.toLowerCase()+'.view.client.html'"></div>
+    <div class="container-fluid">
+        <div ng-if="model.widget.widgetType" ng-include="'views/widget/widget-'+model.widget.widgetType.toLowerCase()+'.view.client.html'"></div>
     </div>
 </div>
 
