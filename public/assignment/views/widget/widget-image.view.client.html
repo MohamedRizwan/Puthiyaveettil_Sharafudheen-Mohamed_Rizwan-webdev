@@ -21,6 +21,7 @@
         <label for = "newImageText">Text</label>
         <input type = "text" id = "newImageText" placeholder = "An Open Letter To Tech Conference Organizers"
                class = "form-control"/>
+        <label for = "newImageText">URL</label>
         <input type = "text" id = "newImageURL" class = "form-control"
                ng-model = "model.widget.url" placeholder="https://static.pexels.com/photos/186422/pexels-photo-186422.jpeg"/>
         <label for = "newImageWidth">Width</label>
@@ -33,6 +34,12 @@
     </form>
     <form action="/api/upload" id="imageUploadForm" method="post" enctype="multipart/form-data">
         <input  name="myFile" onchange="previewImage(this)" type="file" class="form-control"/>
+        <input name="width" value="{{model.widget.width}}" style="display: none"/>
+        <input name="userId" value="{{model.userId}}" style="display: none"/>
+        <input name="websiteId" value="{{model.websiteId}}" style="display: none"/>
+        <input name="pageId" value="{{model.pageId}}" style="display: none"/>
+        <input name="widgetId" value="{{model.widgetId}}" style="display: none"/>
+        <button type="submit" class="btn btn-block btn-primary">Upload Image</button>
         <img src="{{model.widget.url}}" width="100px">
     </form>
 

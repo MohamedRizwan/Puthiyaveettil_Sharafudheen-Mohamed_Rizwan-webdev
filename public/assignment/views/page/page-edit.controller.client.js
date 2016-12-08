@@ -18,6 +18,20 @@
         vm.updatePage = updatePage;
         vm.deletePage = deletePage;
 
+        var promise = PageService.findPageByWebsiteId(userId, websiteId);
+        promise
+            .success(function pages(pages) {
+                if (pages != '0') {
+                    vm.pages = pages;
+
+                    var userId = parseInt($routeParams['uid']);
+                    vm.pages = pages;
+                }
+            })
+            .error(function errorHandler(err) {
+                console.log(err);
+            })
+
 
         function updatePage(userId, websiteId, pageId, name, title) {
             var promise = PageService.updatePage(userId, websiteId, pageId, {name: vm.page.name, title: vm.page.title});
