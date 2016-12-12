@@ -11,13 +11,13 @@
         vm.userId = userId;
         console.log(vm.userId);
         function init() {
-            var promise = UserService.findUserById(vm.userId);
+            //var promise = UserService.findUserById(vm.userId);
+            var promise = UserService.findLoggedInUser();
             promise
                 .success(function user(user) {
-
-
                     if (user != '0') {
                         vm.user = user;
+                        vm.userId = user._id;
                         console.log("found user");
                     }
                 })
@@ -45,13 +45,26 @@
         vm.deleteUser = deleteUser;
         function deleteUser() {
             var promise = UserService.deleteUser(vm.user._id);
-             promise
+            promise
                 .success(function () {
                     $location.url("/login");
                 })
                 .error(function () {
 
                 })
+        }
+
+        vm.logout = logout;
+        function logout() {
+            UserService
+                .logout()
+                .success(function () {
+                    $location.url("/login");
+                })
+                .error(function (err) {
+                    console.log("Error logging out user");
+                    console.log(err);
+                });
         }
     }
 })();

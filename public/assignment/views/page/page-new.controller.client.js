@@ -15,7 +15,7 @@
         vm.createPage = createPage;
         function createPage(name, description) {
 
-            var page = {name: vm.name, title: vm.title}
+            var page = {name: vm.name, title: vm.title};
             var promise = PageService.createPage(userId, websiteId, page);
             promise
                 .success(function page(newPage) {

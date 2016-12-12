@@ -10,15 +10,45 @@
 
 
         var api = {
+            login: login,
+            logout: logout,
+            checkLoggedin: checkLoggedin,
+            register: register,
+            findLoggedInUser : findLoggedInUser,
             findUserByCredentials: findUserByCredentials,
             findUserById: findUserById,
-            createUser: createUser,
+            //createUser: createUser,
             findUserByUsername: findUserByUsername,
             updateUser: updateUser,
             deleteUser: deleteUser
 
         };
         return api;
+
+        function login(user) {
+            var url = "/api/login";
+            return $http.post(url, user);
+        }
+
+        function logout() {
+            var url = "/api/logout";
+            return $http.post(url);
+        }
+
+        function checkLoggedin() {
+            var url = "/api/loggedin";
+            return $http.post(url);
+        }
+
+        function register(user) {
+            var url = "/api/register";
+            return $http.post(url, user);
+        }
+
+        function findLoggedInUser() {
+            var url = "/api/user";
+            return $http.get(url);
+        }
 
         function findUserByCredentials(username, password) {
             var url = "/api/user?username="+username+"&password="+password;
@@ -32,11 +62,10 @@
 
         }
 
-
-        function createUser(newUser) {
+        /*function createUser(newUser) {
             return $http.post("/api/user", newUser);
 
-        }
+        }*/
 
         function findUserByUsername(username) {
             var url = "/api/user?username="+username;

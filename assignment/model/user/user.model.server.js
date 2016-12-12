@@ -13,7 +13,9 @@ module.exports = function () {
         updateUser: updateUser,
         deleteUser: deleteUser,
         findUserByCredentials: findUserByCredentials,
-        findUserByUserName: findUserByUserName,
+        findUserByUsername: findUserByUsername,
+        findUserByFacebookId: findUserByFacebookId,
+        findUserByGoogleId: findUserByGoogleId,
         findAllWebsitesForUser: findAllWebsitesForUser,
         setModel: setModel
     }
@@ -63,7 +65,15 @@ module.exports = function () {
         })
     }
 
-    function findUserByUserName(username) {
-        return UserModel.find({username: username})
+    function findUserByUsername(username) {
+        return UserModel.find({username: username});
+    }
+
+    function findUserByFacebookId(facebookId) {
+        return UserModel.findOne({'facebook.id': facebookId});
+    }
+
+    function findUserByGoogleId(googleId) {
+        return UserModel.findOne({'google.id': googleId});
     }
 };
